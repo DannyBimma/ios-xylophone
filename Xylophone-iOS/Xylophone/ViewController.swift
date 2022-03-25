@@ -18,14 +18,15 @@ class ViewController: UIViewController {
     }
 
     @IBAction func btnPressed(_ sender: UIButton) {
-        print("C btn touched up inside!")
+        // log btn title to console
+        print(sender.currentTitle!)
         
-        // call playSound function
-        playSound()
+        // call playSound function with currentTitle
+        playSound(soundName: sender.currentTitle!)
     }
     
-    func playSound() {
-        guard let url = Bundle.main.url(forResource: "C", withExtension: "wav") else { return }
+    func playSound(soundName: String) {
+        guard let url = Bundle.main.url(forResource: soundName, withExtension: "wav") else { return }
 
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
