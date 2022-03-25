@@ -21,6 +21,17 @@ class ViewController: UIViewController {
         // log btn title to console
         print(sender.currentTitle!)
         
+        // log btns opacity
+        print(sender.alpha)
+        
+        // change opacity of pressed btn to half
+        sender.alpha = 0.5
+        
+        // after a 2s revert opacity
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            sender.alpha = 1
+        }
+        
         // call playSound function with currentTitle
         playSound(soundName: sender.currentTitle!)
     }
